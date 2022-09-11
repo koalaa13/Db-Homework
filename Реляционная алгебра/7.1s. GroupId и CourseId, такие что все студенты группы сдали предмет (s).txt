@@ -1,0 +1,16 @@
+select distinct GroupId, CourseId from
+ (select distinct CourseId from Marks) q1
+ cross join
+ (select distinct GroupId from Students) q2
+except
+select distinct GroupId, CourseId from (
+ select distinct CourseId, StudentId, GroupId from 
+  (select distinct CourseId from Marks) q3
+  cross join
+  (select distinct StudentId, GroupId from Students) q4
+ except
+ select distinct CourseId, StudentId, GroupId from
+  (select distinct CourseId, StudentId from Marks) q6
+  natural join
+  (select distinct StudentId, GroupId from Students) q7
+) q5

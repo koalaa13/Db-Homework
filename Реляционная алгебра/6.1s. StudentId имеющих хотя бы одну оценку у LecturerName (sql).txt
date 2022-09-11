@@ -1,0 +1,6 @@
+select distinct s.StudentId
+from Students s
+inner join Plan p on p.GroupId = s.GroupId
+inner join Lecturers l on l.LecturerId = p.LecturerId
+inner join Marks m on m.CourseId = p.CourseId and m.StudentId = s.StudentId
+where LecturerName = :LecturerName

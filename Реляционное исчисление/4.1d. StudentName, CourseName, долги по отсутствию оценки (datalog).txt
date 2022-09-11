@@ -1,0 +1,13 @@
+HaveMark(StudentId, StudentName, CourseId, CourseName) :-
+Students(StudentId, StudentName, _),
+Courses(CourseId, CourseName),
+Marks(StudentId, CourseId, _).
+HaveInPlan(StudentId, StudentName, CourseId, CourseName) :-
+Students(StudentId, StudentName, GroupId),
+Plan(GroupId, CourseId, _),
+Courses(CourseId, CourseName).
+NeedStudents(StudentName, CourseName) :-
+Students(StudentId, StudentName, _),
+Courses(CourseId, CourseName),
+HaveInPlan(StudentId, StudentName, CourseId, CourseName),
+not HaveMark(StudentId, StudentName, CourseId, CourseName).

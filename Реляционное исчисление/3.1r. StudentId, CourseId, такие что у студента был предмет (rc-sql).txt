@@ -1,0 +1,11 @@
+select distinct
+    m.StudentId,
+    m.CourseId
+from Marks m
+union
+select distinct
+    s.StudentId,
+    p.CourseId
+from Students s, Plan p
+where
+s.GroupId = p.GroupId

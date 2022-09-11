@@ -1,0 +1,2 @@
+delete from Students as s
+where (select count(m.CourseId) from Marks m where m.StudentId = s.StudentId) >= 3

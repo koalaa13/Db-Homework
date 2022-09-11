@@ -1,0 +1,15 @@
+proj{StudentId, StudentName, GroupId}
+(
+ sigma{CourseName = :CourseName}
+ (
+  Students nj Plan nj Courses
+ )
+)
+except
+proj{StudentId, StudentName, GroupId}
+(
+ sigma{CourseName = :CourseName}
+ (
+  Students nj Marks nj Courses
+ )
+)

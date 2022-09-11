@@ -1,0 +1,7 @@
+select distinct s.StudentId
+from Students s, Plan p, Marks m, Lecturers l
+where p.GroupId = s.GroupId and
+m.StudentId = s.StudentId and
+p.CourseId = m.CourseId and
+p.LecturerId = l.LecturerId and
+l.LecturerName = :LecturerName

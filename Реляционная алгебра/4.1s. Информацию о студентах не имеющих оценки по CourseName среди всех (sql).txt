@@ -1,0 +1,8 @@
+select s.StudentId, s.StudentName, s.GroupId
+from Students s
+except
+select s.StudentId, s.StudentName, s.GroupId
+from Students s
+inner join Marks m on s.StudentId = m.StudentId
+inner join Courses c on c.CourseId = m.CourseId
+where CourseName = :CourseName

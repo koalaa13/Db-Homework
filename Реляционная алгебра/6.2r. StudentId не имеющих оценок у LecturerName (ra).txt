@@ -1,0 +1,12 @@
+proj{StudentId}
+(
+ Students
+)
+except
+proj{StudentId}
+(
+ sigma{LecturerName = :LecturerName}
+ (
+  Students nj Plan nj Lecturers nj Marks
+ )
+)

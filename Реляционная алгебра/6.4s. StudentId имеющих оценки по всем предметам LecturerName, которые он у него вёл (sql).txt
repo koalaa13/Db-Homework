@@ -1,0 +1,32 @@
+select distinct StudentId from
+(
+ select distinct StudentId, GroupId, LecturerId, LecturerName from
+  (select distinct StudentId from Marks) q1
+  cross join
+  (select distinct GroupId, LecturerId, LecturerName
+   from Plan
+   natural join Lecturers
+   where LecturerName = :LecturerName
+  ) q2
+ except
+ select distinct StudentId, GroupId, LecturerId, LecturerName from (
+  select distinct StudentId, GroupId, LecturerId, LecturerName, CourseId from 
+   (select distinct StudentId from Marks) q3
+   cross join
+   (select distinct GroupId, CourseId, LecturerId, LecturerName
+    from Plan
+    natural join Lecturers
+    where LecturerName = :LecturerName
+   ) q4
+  except
+  select distinct StudentId, GroupId, LecturerId, LecturerName, CourseId from
+   (select distinct StudentId, CourseId from Marks) q6
+   natural join
+   (select distinct GroupId, CourseId, LecturerId, LecturerName
+    from Plan
+    natural join Lecturers
+    where LecturerName = :LecturerName
+   ) q7
+ ) q5
+) q6
+natural join Students

@@ -1,0 +1,5 @@
+select s.StudentName, q1.SumMark
+from Students s
+left join (select m.StudentId, sum(m.Mark) as SumMark
+from Marks m
+group by m.StudentId) q1 on s.StudentId = q1.StudentId

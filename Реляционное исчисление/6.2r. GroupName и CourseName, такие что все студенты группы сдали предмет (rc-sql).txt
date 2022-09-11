@@ -1,0 +1,29 @@
+select GroupName, CourseName
+from Groups g333, Courses c333, 
+ (select distinct g.GroupId, c.CourseId
+ from Groups g, Courses c
+ where
+ not exists(
+  select s2.GroupId, c2.CourseId
+  from Students s2, Courses c2
+  where
+  s2.GroupId = g.GroupId and
+  c2.CourseId = c.CourseId and
+  not exists(
+   select s3.StudentId, c3.CourseId
+   from Students s3, Courses c3
+   where
+   s3.StudentId = s2.StudentId and
+   c3.CourseId = c2.CourseId and
+   exists(
+    select s4.StudentId, m.CourseId
+    from Marks m, Students s4
+    where
+    s3.StudentId = s4.StudentId and
+    s4.StudentId = m.StudentId and
+    m.CourseId = c3.CourseId
+   )
+  )
+ ) 
+ )q1
+where g333.GroupId = q1.GroupId and c333.CourseId = q1.CourseId

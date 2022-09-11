@@ -1,0 +1,11 @@
+select StudentName, CourseName from (
+select distinct
+    s.StudentId,
+    s.StudentName,
+    c.CourseId,
+    c.CourseName
+from Students s, Courses c, Plan p
+where 
+s.GroupId = p.GroupId and c.CourseId = p.CourseId and
+not exists (select * from Marks m where m.StudentId = s.StudentId and m.CourseId = c.CourseId and m.Mark > 2)
+) q1

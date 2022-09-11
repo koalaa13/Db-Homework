@@ -1,0 +1,11 @@
+select distinct s1.StudentId
+from Students s1
+where
+not exists (
+select distinct m.CourseId 
+from Marks m, Lecturers l, Plan p
+where p.CourseId = m.CourseId and
+m.StudentId = s1.StudentId and
+s1.GroupId = p.GroupId and
+p.LecturerId = l.LecturerId and
+l.LecturerName = :LecturerName)

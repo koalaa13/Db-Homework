@@ -1,0 +1,14 @@
+select s.StudentName, c.CourseName
+from Students s
+natural join (select s.StudentId, c.CourseId
+ from Students s
+ natural join Plan p
+ natural join Courses c
+except
+select s.StudentId, c.CourseId
+ from Students s
+ natural join Plan p
+ natural join Courses c
+ natural join Marks m
+) q1
+inner join Courses c on c.CourseId = q1.CourseId

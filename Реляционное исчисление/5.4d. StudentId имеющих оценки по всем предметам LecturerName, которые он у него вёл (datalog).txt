@@ -1,0 +1,13 @@
+HaveNeededCoursesMark(StudentId, CourseId) :-
+ Students(StudentId, _, GroupId),
+ Lecturers(LecturerId, :LecturerName),
+ Plan(GroupId, CourseId, LecturerId),
+ Marks(StudentId, CourseId, _).
+WrongAnswer(StudentId) :-
+ Students(StudentId, _, GroupId),
+ Lecturers(LecturerId, :LecturerName),
+ Plan(GroupId, CourseId, LecturerId),
+ not HaveNeededCoursesMark(StudentId, CourseId).
+Answer(StudentId) :-
+ Students(StudentId, _, _),
+ not WrongAnswer(StudentId).

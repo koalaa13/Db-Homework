@@ -1,0 +1,6 @@
+update Students as s set 
+Marks = (select count(CourseId) from Marks as m where m.StudentId = s.StudentId), 
+Debts = 
+ (select count(distinct CourseId) from Plan as p 
+  where not exists (select * from Marks as m where m.StudentId = s.StudentId and m.CourseId = p.CourseId) and
+  p.GroupId = s.GroupId)

@@ -1,0 +1,4 @@
+select distinct s.StudentId, s.StudentName, s.GroupId
+from Students s
+inner join Marks m on s.StudentId = m.StudentId
+where CourseId = :CourseId and Mark = :Mark

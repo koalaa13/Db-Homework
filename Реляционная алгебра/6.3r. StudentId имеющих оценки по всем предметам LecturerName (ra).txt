@@ -1,0 +1,9 @@
+proj{StudentId, CourseId}(Marks)
+div
+proj{CourseId}
+(
+ sigma{LecturerName = :LecturerName}
+ (
+  Plan nj Lecturers
+ )
+)

@@ -1,0 +1,3 @@
+proj{StudentId, CourseId}(Marks)
+gdiv
+proj{StudentId, GroupId}(Students)

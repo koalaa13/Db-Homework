@@ -1,0 +1,18 @@
+select StudentName, CourseName from (
+select distinct
+    m.StudentId,
+    s.StudentName,
+    m.CourseId,
+    c.CourseName
+from Students s, Marks m, Courses c
+where s.StudentId = m.StudentId and c.CourseId = m.CourseId
+union
+select distinct
+    s.StudentId,
+    s.StudentName,
+    p.CourseId,
+    c.CourseName
+from Students s, Plan p, Courses c
+where
+s.GroupId = p.GroupId and c.CourseId = p.CourseId
+) q1

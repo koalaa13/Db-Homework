@@ -1,0 +1,12 @@
+DELIMITER $$
+ 
+create trigger PreserverMarks 
+after update 
+on Marks for each row
+begin
+ if old.Mark > new.Mark then
+  set new.Mark = old.Mark
+ end if;
+end$$
+ 
+DELIMITER ;

@@ -1,0 +1,13 @@
+HaveLecturersMark(StudentId, CourseId) :-
+ Lecturers(LecturerId, :LecturerName),
+ Plan(_, CourseId, LecturerId),
+ Students(StudentId, _, _),
+ Marks(StudentId, CourseId, _).
+WrongAnswer(StudentId) :-
+ Students(StudentId, _, _),
+ Lecturers(LecturerId, :LecturerName),
+ Plan(_, CourseId, LecturerId),
+ not HaveLecturersMark(StudentId, CourseId).
+Answer(StudentId) :-
+ Students(StudentId, _, _),
+ not WrongAnswer(StudentId).

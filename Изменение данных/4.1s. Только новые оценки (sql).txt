@@ -1,0 +1,3 @@
+insert into Marks
+ select StudentId, CourseId, Mark from NewMarks as nm 
+ where not exists (select * from Marks as m where m.StudentId = nm.StudentId and m.CourseId = nm.CourseId)

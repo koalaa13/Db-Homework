@@ -1,0 +1,7 @@
+proj{StudentName, CourseName}
+(
+ sigma{Mark = null}
+ (
+  (Students nj Courses nj Plan) lj Marks
+ )
+)

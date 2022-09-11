@@ -1,0 +1,2 @@
+update Marks as m set Mark = (select nm.Mark from NewMarks nm where m.StudentId = nm.StudentId and m.CourseId = nm.CourseId)
+where exists (select * from NewMarks as nm where m.StudentId = nm.StudentId and m.CourseId = nm.CourseId and nm.Mark > m.Mark)

@@ -1,0 +1,6 @@
+select 
+    StudentId,
+    StudentName,
+    GroupId
+from Students
+where exists (select * from Groups where Groups.GroupId = Students.Groupid and Groups.GroupName = :GroupName)

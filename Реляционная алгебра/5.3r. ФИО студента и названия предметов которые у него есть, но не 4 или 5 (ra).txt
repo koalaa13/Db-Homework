@@ -1,0 +1,7 @@
+proj{StudentName, CourseName}
+(
+ sigma{Mark <> 4 && Mark <> 5}
+ (
+  (Students nj Courses nj Plan) lj Marks
+ )
+)

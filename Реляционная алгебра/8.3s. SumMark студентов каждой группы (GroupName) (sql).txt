@@ -1,0 +1,7 @@
+select g.GroupName, sum(q1.SumMark) as SumMark
+from Groups g
+left join Students s on s.GroupId = g.GroupId
+left join (select m.StudentId, sum(m.Mark) as SumMark
+from Marks m
+group by m.StudentId) q1 on s.StudentId = q1.StudentId
+group by g.GroupName

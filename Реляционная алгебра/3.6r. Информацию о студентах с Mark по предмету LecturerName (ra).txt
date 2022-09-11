@@ -1,0 +1,12 @@
+proj{StudentId, StudentName, GroupId}
+(
+ sigma{LecturerName = :LecturerName && Mark = :Mark}
+ (
+  r{RemoveGroup = GroupId}
+  (
+   Marks nj Plan nj Lecturers
+  )
+  nj
+  Students 
+ )
+)

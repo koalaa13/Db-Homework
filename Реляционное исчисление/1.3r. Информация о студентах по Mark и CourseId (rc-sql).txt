@@ -1,0 +1,6 @@
+select 
+    StudentId,
+    StudentName,
+    GroupId
+from Students
+where exists (select * from Marks where Marks.StudentId = Students.StudentId and Marks.CourseId = :CourseId and Marks.Mark = :Mark)

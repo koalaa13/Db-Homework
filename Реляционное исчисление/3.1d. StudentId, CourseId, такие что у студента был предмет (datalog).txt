@@ -1,0 +1,5 @@
+NeedStudents(StudentId, CourseId) :-
+Marks(StudentId, CourseId, _).
+NeedStudents(StudentId, CourseId) :-
+Students(StudentId, _, GroupId),
+Plan(GroupId, CourseId, _).

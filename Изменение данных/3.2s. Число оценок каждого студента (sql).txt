@@ -1,0 +1,1 @@
+update Students as s set Marks = (select count(CourseId) from Marks as m where m.StudentId = s.StudentId)

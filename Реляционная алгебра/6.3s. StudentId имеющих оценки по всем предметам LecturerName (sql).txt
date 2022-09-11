@@ -1,0 +1,17 @@
+select distinct StudentId 
+from Marks
+except
+select distinct StudentId
+from (
+ select distinct StudentId, CourseId
+  from
+   (select StudentId
+    from Marks) q4
+   cross join
+   (select distinct CourseId
+     from Plan 
+     natural join Lecturers
+     where LecturerName = :LecturerName) q2
+ except
+ select StudentId, CourseId from Marks
+) q1

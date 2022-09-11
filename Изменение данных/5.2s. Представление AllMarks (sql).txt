@@ -1,0 +1,8 @@
+create view AllMarks as
+select s.StudentId, 
+(select count(am.CourseId) from 
+ (select * from Marks 
+  union all
+  select * from NewMarks) as am 
+ where am.StudentId = s.StudentId) as Marks 
+from Students as s
